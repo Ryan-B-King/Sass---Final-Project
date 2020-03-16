@@ -23,3 +23,16 @@
     font-size:$size;
     line-height:0;
 }
+
+@mixin contentBoxes($float:left, ) {
+    float: $float;
+    width: 460px;
+}
+
+@mixin footerBoxes($height: 90px, $backgroundColor: $color-white2, $padding: 30px) {
+    width: 100%;
+    height: $height;
+    background:$backgroundColor;
+    padding-top:$padding;
+}
+

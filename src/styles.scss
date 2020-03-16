@@ -1,4 +1,4 @@
-@import "variables", "mixins";
+@import "variables", "mixins", "mediaquery";
 
 // BASIC STYLES
 body {
@@ -9,6 +9,15 @@ body {
 }
 main {
     width:940px;
+    @include mediaQuery(959px) {
+        width: 768px;
+      }
+    @include mediaQuery(767px) {
+        width: 460px;
+    }
+    @include mediaQuery(459px) {
+        width: 300px;
+    }
     margin:0 auto;
     padding:0 10px;
 }
@@ -22,17 +31,53 @@ header {
 header img {
     max-width: 100%;
     height: auto;
+    @include mediaQuery(767px) {
+        margin-bottom:100px;
+    }
+    @include mediaQuery(459px) {
+        margin-bottom:80px;
+    }
 }
 header h1 {
     @include headerBoxes();
+    @include mediaQuery(959px) {
+        font-size:3em;
+      }
+    @include mediaQuery(767px) {
+    font-size:2em;
+    }
 }
+
+header h1:first-child {
+    @include mediaQuery(459px) {
+        font-size:1.4em;
+        margin-bottom:20px;
+    }
+}
+
 header h2 {
     @include headerBoxes($color-white, 900, 2.5em,);
     margin-bottom:70px;
+    @include mediaQuery(959px) {
+        font-size:1.5em;
+    }
+    @include mediaQuery(767px) {
+        font-size:1em;
+    }
+    @include mediaQuery(459px) {
+        font-size:1.4em;
+    }
 }
 header h3 {
     @include headerBoxes($color-lightgray, 400, 2em);
     margin-bottom:50px;
+    @include mediaQuery(767px) {
+        font-size:1.5em;
+    }
+    @include mediaQuery(459px) {
+        color: $color-white;
+        font-size:1em;
+    }
 }
 
 
@@ -49,19 +94,41 @@ header h3 {
     font-size:2.5em;
     font-weight:100;
     padding-top:50px;
+    @include mediaQuery(767px) {
+        font-size:2em;
+        padding-top:50px;
+    }
+    @include mediaQuery(459px) {
+        font-size:1.5em;
+        padding-top:30px;
+    }
 }
 #content {
     width:940px;
     margin:20px auto;
+    @include mediaQuery(959px) {
+        width:inherit;
+    }
 }
 #content h3 {
     color:$color-lightgray;
     font-size:2em;
     font-weight:400;
+    @include mediaQuery(459px) {
+        font-size:1.6em;
+    }
 }
 #content #products {
-    width:460px;
-    float:left;
+    @include contentBoxes();
+    @include mediaQuery(959px) {
+        width:46%;
+        margin:0 2%;
+    }
+    @include mediaQuery(767px) {
+        width:96%;
+        margin:0 2%;
+        float:none;
+    }
 }
 #content #products img {
     float:left;
@@ -70,30 +137,49 @@ header h3 {
 #content #products article {
     margin-bottom:40px;
 }
+article img{
+    @include mediaQuery(459px) {
+        display:none;
+    }
+}
 #content #products h4 {
     line-height:1em;
 }
 #content #testimonials {
-    width:460px;
-    float:right;
+    @include contentBoxes(right);
+    @include mediaQuery(959px) {
+        width:46%;
+        margin:0 2%;
+    }
+    @include mediaQuery(767px) {
+        width:96%;
+        margin:0 2%;
+        float:none;
+    }
 }
 
 
 // FOOTER
 .greybar {
-    width:100%;
-    height:90px;
-    background:$color-white2;
+    @include footerBoxes();
     clear:both;
-    padding-top:30px;
+    @include mediaQuery(459px) {
+        display:none;
+    }
 }
 footer {
-    width:100%;
-    height:120px;
-    background:$color-darkgray;
-    text-align:center;
+    @include footerBoxes(120px, $color-darkgray, 50px);
     color: $color-white;
-    padding-top:50px;
+    text-align:center;
+    @include mediaQuery(459px) {
+        text-align:center;
+    }
+}
+footer p, footer img {
+    @include mediaQuery(459px) {
+        float:none;
+        margin:0;
+    }
 }
 .social-media {
     margin:0 auto;
@@ -121,6 +207,3 @@ footer {
 .social-media div.four {
     background:url('#{$img-social}') -114px 0;
 }
-
-@import "mediaquery";
-
