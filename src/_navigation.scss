@@ -1,16 +1,15 @@
 // NAVIGATION
 figure {
-    width:(400px/940px) * 100%;
-    height:190px;
-    background:url('#{$img-logo}') no-repeat 0 50px;
-    float:left;
+    @include navLogoBoxes;
+    width:(400px/940px) * 100%; // 42.55%
+    @include imgBackground (url('#{$img-logo}'));
+    background-position: 0 50px;
     display:block;
     margin:0;
 }
 nav {
-    width:(540px/940px) * 100%;
-    height:190px;
-    float:left;
+    @include navLogoBoxes;
+    width:(540px/940px) * 100%; // 57.45%
     text-align:right;
     ul {
         list-style-type:none;

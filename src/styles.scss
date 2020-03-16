@@ -1,13 +1,11 @@
-@import "variables","navigation", "mixins";
-
+@import "variables", "mixins";
 
 // BASIC STYLES
 body {
     font-family: $font-body, sans-serif;
     font-size:1em;
     line-height:2em;
-    background:url('#{$img-body)}') $color-white repeat-x;
-    margin:0;
+    @include imgBackground(url('#{$img-body)}'), repeat-x, $color-white);
 }
 main {
     width:940px;
@@ -15,36 +13,25 @@ main {
     padding:0 10px;
 }
 
+@import "navigation";
 
 // HEADER
 header {
-    width:inherit;
-    clear:both;
-    text-align:center;
-    padding-top:40px;
+    @include headerMain();
 }
 header img {
-    max-width:100%;
-    height:auto;
+    max-width: 100%;
+    height: auto;
 }
 header h1 {
-    color:$color-salmon;
-    font-weight:100;
-    font-size:4em;
-    line-height:0;
+    @include headerBoxes();
 }
 header h2 {
-    color: $color-white;
-    font-weight:900;
-    font-size:2.5em;
-    line-height:0;
+    @include headerBoxes($color-white, 900, 2.5em,);
     margin-bottom:70px;
 }
 header h3 {
-    color:$color-lightgray;
-    font-weight:400;
-    font-size:2em;
-    line-height:0;
+    @include headerBoxes($color-lightgray, 400, 2em);
     margin-bottom:50px;
 }
 
@@ -135,4 +122,5 @@ footer {
     background:url('#{$img-social}') -114px 0;
 }
 
+@import "mediaquery";
 
